@@ -5,7 +5,7 @@
   
   A modern, feature-rich scientific calculator built with pure HTML, CSS, and JavaScript. This calculator combines powerful mathematical capabilities with an elegant, user-friendly interface.
 
-  [View Demo](https://scientific-calculator-demo.netlify.app) · [Report Bug](https://github.com/mouryas-aiml/scientific-calculator/issues) · [Request Feature](https://github.com/mouryas-aiml/scientific-calculator/issues)
+  [View Demo](https://chipper-centaur-64e666.netlify.app/) · [Report Bug](https://github.com/mouryas-aiml/scientific-calculator/issues) · [Request Feature](https://github.com/mouryas-aiml/scientific-calculator/issues)
 </div>
 
 ## ✨ Features
@@ -132,9 +132,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 - GitHub: [mouryas-aiml](https://github.com/mouryas-aiml)
 - Project Link: [https://github.com/mouryas-aiml/scientific-calculator](https://github.com/mouryas-aiml/scientific-calculator)
-
+                  
 ---
 
 <div align="center">
-  Made with ❤️ by <a href="https://github.com/mouryas-aiml">mouryas-aiml</a>
+  Made with ❤️ by <a href="https://github.com/mouryas-aiml">MOURYA S</a> 
 </div>
