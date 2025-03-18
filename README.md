@@ -5,7 +5,7 @@
   
   A modern, feature-rich scientific calculator built with pure HTML, CSS, and JavaScript. This calculator combines powerful mathematical capabilities with an elegant, user-friendly interface.
 
-  [View Demo](#) · [Report Bug](#) · [Request Feature](#)
+  [View Demo](https://scientific-calculator-demo.netlify.app) · [Report Bug](https://github.com/mouryas-aiml/scientific-calculator/issues) · [Request Feature](https://github.com/mouryas-aiml/scientific-calculator/issues)
 </div>
 
 ## ✨ Features
@@ -95,7 +95,7 @@ scientific-calculator/
 ### Setup and Running
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/scientific-calculator.git
+   git clone https://github.com/mouryas-aiml/scientific-calculator.git
    ```
 
 2. Navigate to project directory:
@@ -128,14 +128,13 @@ Distributed under the MIT License. See `LICENSE` for more information.
 - [Lucide Icons](https://lucide.dev/) - Beautiful SVG icons
 - [Unsplash](https://unsplash.com/) - README images
 
-## 📧 Contact
+## 📧 Contact & Social Media
 
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
-
-Project Link: [https://github.com/yourusername/scientific-calculator](https://github.com/yourusername/scientific-calculator)
+- GitHub: [mouryas-aiml](https://github.com/mouryas-aiml)
+- Project Link: [https://github.com/mouryas-aiml/scientific-calculator](https://github.com/mouryas-aiml/scientific-calculator)
 
 ---
 
 <div align="center">
-  Made with ❤️ by [Your Name]
+  Made with ❤️ by <a href="https://github.com/mouryas-aiml">mouryas-aiml</a>
 </div>
