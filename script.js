@@ -1,60 +1,103 @@
-let display = document.getElementById('display');
-let buttons = document.querySelectorAll('.button');
-let clearButton = document.getElementById('clear');
-let currentNumber = '';
-let previousNumber = '';
-let operation = '';
+let display = '0';
+let expression = '';
+let history = [];
 
-buttons.forEach(button => {
-    button.addEventListener('click', () => {
-        if (button.value === '=') {
-            calculate();
-        } else if (button.value === 'C') {
-            clear();
-        } else {
-            updateDisplay(button.value);
-        }
-    });
+const expressionElement = document.getElementById('expression');
+const resultElement = document.getElementById('result');
+const historyElement = document.getElementById('history');
+const historyContentElement = document.getElementById('historyContent');
+const historyBtn = document.getElementById('historyBtn');
+
+historyBtn.addEventListener('click', () => {
+  historyElement.classList.toggle('hidden');
 });
 
-function updateDisplay(value) {
-    if (value === '+' || value === '-' || value === '*' || value === '/') {
-        previousNumber = currentNumber;
-        currentNumber = '';
-        operation = value;
-    } else {
-        currentNumber += value;
-    }
-    display.value = currentNumber;
+function updateDisplay() {
+  expressionElement.textContent = expression || '0';
+  resultElement.textContent = display;
+}
+
+function updateHistory() {
+  historyContentElement.innerHTML = history
+    .map(item => `<div class="history-item">${item}</div>`)
+    .join('');
+}
+
+function handleNumber(num) {
+  if (display === '0' || display === 'Error') {
+    display = num;
+  } else {
+    display += num;
+  }
+  expression += num;
+  updateDisplay();
+}
+
+function handleOperator(op) {
+  if (display !== 'Error') {
+    display = '0';
+    expression += op;
+    updateDisplay();
+  }
+}
+
+function handleFunction(func) {
+  if (display !== 'Error') {
+    expression += func + '(';
+    display = '0';
+    updateDisplay();
+  }
+}
+
+function clearAll() {
+  display = '0';
+  expression = '';
+  updateDisplay();
+}
+
+function deleteLast() {
+  if (display.length > 1) {
+    display = display.slice(0, -1);
+  } else {
+    display = '0';
+  }
+  expression = expression.slice(0, -1);
+  updateDisplay();
 }
 
 function calculate() {
-    let result;
-    switch (operation) {
-        case '+':
-            result = parseFloat(previousNumber) + parseFloat(currentNumber);
-            break;
-        case '-':
-            result = parseFloat(previousNumber) - parseFloat(currentNumber);
-            break;
-        case '*':
-            result = parseFloat(previousNumber) * parseFloat(currentNumber);
-            break;
-        case '/':
-            result = parseFloat(previousNumber) / parseFloat(currentNumber);
-            break;
-        default:
-            result = currentNumber;
+  try {
+    // Replace trigonometric functions with their radian versions
+    let evalExpression = expression
+      .replace(/π/g, 'Math.PI')
+      .replace(/sin\(([^)]+)\)/g, (_, angle) => `Math.sin(${angle} * Math.PI / 180)`)
+      .replace(/cos\(([^)]+)\)/g, (_, angle) => `Math.cos(${angle} * Math.PI / 180)`)
+      .replace(/tan\(([^)]+)\)/g, (_, angle) => `Math.tan(${angle} * Math.PI / 180)`)
+      .replace(/log\(/g, 'Math.log10(')
+      .replace(/ln\(/g, 'Math.log(')
+      .replace(/√\(/g, 'Math.sqrt(')
+      .replace(/\^/g, '**')
+      .replace(/×/g, '*')
+      .replace(/÷/g, '/');
+
+    let result = eval(evalExpression);
+    result = parseFloat(result.toFixed(8));
+    
+    display = result.toString();
+    expression = result.toString();
+    
+    history.unshift(`${expression} = ${result}`);
+    if (history.length > 10) {
+      history.pop();
     }
-    display.value = result;
-    currentNumber = result.toString();
-    previousNumber = '';
-    operation = '';
+    
+    updateDisplay();
+    updateHistory();
+  } catch (error) {
+    display = 'Error';
+    updateDisplay();
+  }
 }
 
-function clear() {
-    display.value = '';
-    currentNumber = '';
-    previousNumber = '';
-    operation = '';
-}
+// Initialize display
+updateDisplay();
